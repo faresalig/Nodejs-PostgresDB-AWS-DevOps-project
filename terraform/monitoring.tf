@@ -11,11 +11,11 @@ variable "kube_monitoring_stack_values" {
         annotations:
           cert-manager.io/cluster-issuer: letsencrypt-production
         hosts:
-          - grafana.YOUR_DOMAIN.com
+          - grafana.disslite.com
         tls:
           - secretName: grafana-tls
             hosts:
-              - grafana.YOUR_DOMAIN.com
+              - grafana.disslite.com
 
     alertmanager:
       enabled: true
@@ -25,11 +25,11 @@ variable "kube_monitoring_stack_values" {
         annotations:
           cert-manager.io/cluster-issuer: letsencrypt-production
         hosts:
-          - alertmanager.YOUR_DOMAIN.com
+          - alertmanager.disslite.com
         tls:
           - secretName: alertmanager-tls
             hosts:
-              - alertmanager.YOUR_DOMAIN.com
+              - alertmanager.disslite.com
 
     prometheus:
       ingress:
@@ -38,11 +38,11 @@ variable "kube_monitoring_stack_values" {
         annotations:
           cert-manager.io/cluster-issuer: letsencrypt-production
         hosts:
-          - prometheus.YOUR_DOMAIN.com
+          - prometheus.disslite.com
         tls:
           - secretName: prometheus-tls
             hosts:
-              - prometheus.YOUR_DOMAIN.com
+              - prometheus.disslite.com
       prometheusSpec:
         replicas: 2
         replicaExternalLabelName: prometheus_replica
@@ -92,7 +92,7 @@ resource "helm_release" "kube_monitoring_stack" {
   repository = "https://prometheus-community.github.io/helm-charts"
   chart      = "kube-prometheus-stack"
   namespace  = "monitoring"
-  version    = "45.29.0"
+  version    = "77.10.0"
 
   create_namespace = true
 

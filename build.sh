@@ -1,12 +1,13 @@
 #!/bin/bash
+set -e  #Any error will stop the script immediately (optional).
 
 # Variables
 cluster_name="cluster-1-test"
-region="REGION" #Make sure it is the same in the terraform variables
-aws_id="AWS_ID"
+region="us-east-1" #Make sure it is the same in the terraform variables
+aws_id="460840353653"
 repo_name="nodejs-app" # If you wanna change the repository name make sure you change it in the k8s/app.yml (Image name) 
 image_name="$aws_id.dkr.ecr.$region.amazonaws.com/$repo_name:latest"
-domain="YOUR_DOMAIN"
+domain="disslite.com"
 dbsecret="db-password-secret"
 namespace="nodejs-app"
 # End Variables
@@ -21,8 +22,8 @@ echo "--------------------Creating EBS--------------------"
 echo "--------------------Deploying Ingress--------------------"
 echo "--------------------Deploying Monitoring--------------------"
 cd terraform && \ 
-terraform init 
-terraform apply -auto-approve
+terraform init && \
+terraform apply -auto-approve && \
 cd ..
 
 # update kubeconfig

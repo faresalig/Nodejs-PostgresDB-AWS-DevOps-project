@@ -68,10 +68,10 @@ module "ebs_csi_irsa_role" {
 
 module "eks" {
   source  = "terraform-aws-modules/eks/aws"
-  version = "~> 18.0"
+  version = "~> 21.0"
 
   cluster_name                    = local.cluster_name
-  cluster_version                 = "1.23"
+  cluster_version                 = "1.33"
   cluster_endpoint_private_access = true
   cluster_endpoint_public_access  = true
 
@@ -166,7 +166,7 @@ module "eks_auth" {
 # Create IAM role + automatically make it available to cluster autoscaler service account
 module "iam_assumable_role_admin" {
   source                        = "terraform-aws-modules/iam/aws//modules/iam-assumable-role-with-oidc"
-  version                       = "~> 4.0"
+  version                       = "~> 2.0"
   create_role                   = true
   role_name                     = "${local.cluster_name}-cluster-autoscaler"
   provider_url                  = replace(module.eks.cluster_oidc_issuer_url, "https://", "")
@@ -232,7 +232,7 @@ resource "helm_release" "cluster-autoscaler" {
   namespace        = local.autoscaler_service_account_namespace
   repository       = "https://kubernetes.github.io/autoscaler"
   chart            = "cluster-autoscaler"
-  version          = "9.10.7"
+  version          = "9.50.1"
   create_namespace = false
 
   set {

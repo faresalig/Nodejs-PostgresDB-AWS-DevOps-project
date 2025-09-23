@@ -16,7 +16,7 @@ variable "name_prefix" {
 
 variable "region" {
   type    = string
-  default = "eu-central-1"
+  default = "us-east-1"
 }
 
 variable "environment" {
@@ -26,7 +26,7 @@ variable "environment" {
 
 variable "admin_users" {
   type        = list(string)
-  default     = ["triple-a"]
+  default     = ["Fares"]
   description = "List of Kubernetes admins."
 }
 
