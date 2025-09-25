@@ -2,7 +2,7 @@
 set -e  #Any error will stop the script immediately (optional).
 
 # Variables
-cluster_name="cluster-1-test"
+cluster_name="cluster-1-dev"
 region="us-east-1" #Make sure it is the same in the terraform variables
 aws_id="460840353653"
 repo_name="nodejs-app" # If you wanna change the repository name make sure you change it in the k8s/app.yml (Image name) 
@@ -21,7 +21,8 @@ echo "--------------------Creating ECR--------------------"
 echo "--------------------Creating EBS--------------------"
 echo "--------------------Deploying Ingress--------------------"
 echo "--------------------Deploying Monitoring--------------------"
-cd terraform && \ 
+
+cd terraform && \
 terraform init && \
 terraform apply -auto-approve && \
 cd ..
@@ -40,7 +41,7 @@ docker build -t $image_name .
 
 #ECR Login
 echo "--------------------Login to ECR--------------------"
-aws ecr get-login-password --region $region | docker login --username AWS --password-stdin $aws_id.dkr.ecr.eu-central-1.amazonaws.com
+aws ecr get-login-password --region $region | docker login --username AWS --password-stdin $aws_id.dkr.ecr.$region.amazonaws.com
 
 # push the latest build to dockerhub
 echo "--------------------Pushing Docker Image--------------------"
@@ -72,7 +73,7 @@ kubectl get ingress nodejs-app-ingress -n $namespace -o jsonpath='{.status.loadB
 echo " "
 echo " "
 echo "--------------------Application URL--------------------"
-echo "http://nodejs.$domain"
+echo "http://nodeapp.$domain"
 
 echo "--------------------Alertmanager URL--------------------"
 echo "http://alertmanager.$domain"

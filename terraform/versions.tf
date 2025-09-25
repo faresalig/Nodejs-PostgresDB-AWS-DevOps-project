@@ -1,10 +1,24 @@
 terraform {
-  required_version = ">= 1.0"
+  required_version = ">= 1.3"
 
   required_providers {
-    aws        = "~> 6.14.1"
-    kubernetes = "~> 2.38.0"
-    helm       = "~> 3.0.2"
-    #google     = "~> 7.3.0"
+    aws = {
+      source  = "hashicorp/aws"
+      version = ">= 5.0"
+    }
+    kubernetes = {
+      source  = "hashicorp/kubernetes"
+      version = "~> 2.38"
+    }
+    helm = {
+      source  = "hashicorp/helm"
+      version = "~> 2.17"
+    }
+    # google provider
+    # google = {
+    #   source  = "hashicorp/google"
+    #   version = "~> 4.85"
+    # }
   }
+  
 }
