@@ -4,3 +4,4 @@ package*
 .terraform*
 *tfstate*
 .history
+*tfvars*
