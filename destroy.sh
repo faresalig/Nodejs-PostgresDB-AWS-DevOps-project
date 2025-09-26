@@ -13,4 +13,5 @@ echo "--------------------Empty AWS ECR--------------------"
 # delete AWS resources
 echo "--------------------Deleting AWS Resources--------------------"
 cd terraform && \
+terraform destroy -target=module.eks -auto-approve && \
 terraform destroy -auto-approve
