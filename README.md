@@ -4,8 +4,6 @@
 
 This repository contains scripts and Kubernetes manifests for deploying the Nodejs application with Postgres Database on an AWS EKS cluster with an accompanying ECR repository and EBS volumes. The deploymSent includes setting up an Ingress controller, monitoring with Prometheus and Grafana, and a continuous deployment pipeline.
 
-🎥 For a detailed walkthrough into this project, check out my video on YouTube: [HERE](https://youtu.be/2ra-Ts9tYQ8).
-
 ## Prerequisites
 
 - [AWS CLI](https://docs.aws.amazon.com/cli/latest/userguide/getting-started-install.html) configured with appropriate permissions
@@ -130,11 +128,7 @@ Once the script has completed, you will need to add DNS records to point your do
 
 2. Next to your domain Add `CNAME Record`
 
-   <img src=imgs/cpanel-2.png>
-
 3. In the `NAME` add `YOUR_APP_NAME.YOUR_DOMAIN` and add the `INGRESS_URL` in `CNAME`
-
-   <img src=imgs/cpanel-3.png>
 
 **Repeat the same steps for the rest of the services**
 
