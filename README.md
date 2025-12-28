@@ -2,8 +2,11 @@
 
 <img src=imgs/cover.png>
 
-This repository contains scripts and Kubernetes manifests for deploying the Nodejs application with Postgres Database on an AWS EKS cluster with an accompanying ECR repository and EBS volumes. The deploymSent includes setting up an Ingress controller, monitoring with Prometheus and Grafana, and a continuous deployment pipeline.
+Designed and implemented a comprehensive end-to-end DevOps solution for a Node.js application with PostgreSQL database deployment on AWS EKS using Terraform for Infrastructure as Code, featuring automated CI/CD pipelines through GitHub Actions for seamless build and deployment processes.
 
+Configured enterprise-grade monitoring and observability stack with Prometheus and Grafana, implemented Ingress Controller with SSL certificates, and managed Kubernetes secrets alongside ECR for container registry and EBS volumes for persistent storage.
+
+Developed automated deployment and teardown scripts with DNS configuration management and GitHub Secrets integration, delivering a production-ready, scalable solution following DevOps best practices for security, monitoring, and infrastructure automation.
 ## Prerequisites
 
 - [AWS CLI](https://docs.aws.amazon.com/cli/latest/userguide/getting-started-install.html) configured with appropriate permissions
